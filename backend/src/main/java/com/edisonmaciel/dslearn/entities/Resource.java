@@ -1,5 +1,6 @@
 package com.edisonmaciel.dslearn.entities;
 
+import com.edisonmaciel.dslearn.entities.enums.ResourceType;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -10,11 +11,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,17 +22,20 @@ import java.util.List;
 @Setter
 @EqualsAndHashCode
 @Entity
-@Table(name = "tb_course")
-public class Course implements Serializable {
+@Table(name = "tb_resource")
+public class Resource implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String title;
+    private String description;
+    private Integer position;
     private String imgUri;
-    private String imgGrayUri;
+    private ResourceType type;
 
-    @OneToMany(mappedBy = "course")
-    private List<Offer> offers = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "offer_id")
+    private Offer offer;
 }
