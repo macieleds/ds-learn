@@ -1,10 +1,9 @@
 package com.edisonmaciel.dslearn.entities;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,11 +18,10 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode
+@AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "tb_offer")
 public class Offer implements Serializable {
@@ -31,9 +29,13 @@ public class Offer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
+
     private String edition;
+
     private Instant startMoment;
+
     private Instant endMoment;
 
     @ManyToOne

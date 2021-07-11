@@ -1,10 +1,9 @@
 package com.edisonmaciel.dslearn.entities;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,11 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 
-@AllArgsConstructor
+
+@Data
 @NoArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode
+@AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "tb_role")
 public class Role implements Serializable {
@@ -25,6 +24,8 @@ public class Role implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
+
     private String authority;
 }
