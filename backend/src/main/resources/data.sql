@@ -21,3 +21,7 @@ INSERT INTO tb_offer (edition, start_Moment, end_Moment, course_id) VALUES ('2.0
 INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id) VALUES ('Trilha HTML', 'Trilha principal do curso', 1, 'https://p1.pxfuel.com/preview/694/768/992/code-coding-programming-css-macbook-laptop.jpg', 1, 1);
 INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id) VALUES ('Forum', 'Tire suas dúvidas', 2, 'https://p1.pxfuel.com/preview/694/768/992/code-coding-programming-css-macbook-laptop.jpg', 2, 1);
 INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id) VALUES ('Lives', 'Lives exclusivas para a turma', 3, 'https://p1.pxfuel.com/preview/694/768/992/code-coding-programming-css-macbook-laptop.jpg', 0, 1);
+
+INSERT INTO tb_section (title, description, position, img_Uri, resource_id, prerequisite_id) VALUES ('Capítulo 1', 'Neste capítulo vamos iniciar a jornada', '1', 'https://p1.pxfuel.com/preview/694/768/992/code-coding-programming-css-macbook-laptop.jpg', '1', null);
+INSERT INTO tb_section (title, description, position, img_Uri, resource_id, prerequisite_id) VALUES ('Capítulo 2', 'Neste capítulo vamos subir o nível da jornada', '2', 'https://p1.pxfuel.com/preview/694/768/992/code-coding-programming-css-macbook-laptop.jpg', '1', '1');
+INSERT INTO tb_section (title, description, position, img_Uri, resource_id, prerequisite_id) VALUES ('Capítulo 3', 'Neste capítulo vamos iniciar a jornada', '3', 'https://p1.pxfuel.com/preview/694/768/992/code-coding-programming-css-macbook-laptop.jpg', '1', '2');

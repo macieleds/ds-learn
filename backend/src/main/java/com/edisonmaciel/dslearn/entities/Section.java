@@ -12,19 +12,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "tb_resource")
-public class Resource implements Serializable {
+@Table(name = "tb_section")
+public class Section implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -40,12 +37,11 @@ public class Resource implements Serializable {
 
     private String imgUri;
 
-    private ResourceType type;
+    @ManyToOne
+    @JoinColumn(name = "resource_id")
+    private Resource resource;
 
     @ManyToOne
-    @JoinColumn(name = "offer_id")
-    private Offer offer;
-
-    @OneToMany(mappedBy = "resource")
-    private List<Section> sections = new ArrayList<>();
+    @JoinColumn(name = "prerequisite_id")
+    private Section prerequisite;
 }
