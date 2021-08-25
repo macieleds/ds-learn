@@ -1,5 +1,7 @@
 package com.edisonmaciel.dslearn.entities;
 
+
+import com.edisonmaciel.dslearn.entities.enums.DeliverStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,43 +13,45 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "tb_offer")
-public class Offer implements Serializable {
-    private static final long serialVersionUID = 1L;
+@Table(name = "tb_deliver")
+public class Deliver implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
 
-    private String edition;
+    private String uri;
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Instant startMoment;
+    private Instant moment;
 
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Instant endMoment;
+    private DeliverStatus status;
+
+    private String feedback;
+
+    private Integer correctCount;
 
     @ManyToOne
-    @JoinColumn(name = "course_id")
-    private Course course;
+    @JoinColumns({
+            @JoinColumn(name = "offer_id"),
+            @JoinColumn(name = "user_id")
+    })
+    private Enrollment enrollment;
 
-    @OneToMany(mappedBy = "offer")
-    private List<Resource> resources = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "lesson_id")
+    private Lesson lesson;
 
-    @OneToMany(mappedBy = "offer")
-    private List<Topic> topics = new ArrayList<>();
 }

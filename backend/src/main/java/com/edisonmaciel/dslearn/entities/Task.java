@@ -1,5 +1,6 @@
 package com.edisonmaciel.dslearn.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.time.Instant;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "tb_task")
 public class Task extends Lesson {
@@ -26,13 +28,4 @@ public class Task extends Lesson {
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant dueDate;
 
-
-    public Task(Long id, String title, Integer position, Section section, String description, Integer questionCount, Integer approvalcount, double weight, Instant dueDate) {
-        super(id, title, position, section);
-        this.description = description;
-        this.questionCount = questionCount;
-        this.approvalCount = approvalcount;
-        this.weight = weight;
-        this.dueDate = dueDate;
-    }
 }
