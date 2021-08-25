@@ -1,16 +1,18 @@
 package com.edisonmaciel.dslearn.entities;
 
 import com.edisonmaciel.dslearn.entities.pk.EnrollmentPK;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -31,8 +33,11 @@ public class Enrollment implements Serializable {
 
     private boolean onlyUpdate;
 
-    public Enrollment(User user, Offer offer, Instant enrollMoment, Instant refundMoment, boolean available, boolean onlyUpdate) {
+    @ManyToMany(mappedBy = "enrollmentsDone")
+    private Set<Lesson> lessonsDone = new HashSet<>();
 
+    public Enrollment(User user, Offer offer, Instant enrollMoment, Instant refundMoment, boolean available, boolean onlyUpdate) {
+        super();
         id.setUser(user);
         id.setOffer(offer);
         this.enrollMoment = enrollMoment;

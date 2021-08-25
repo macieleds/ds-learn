@@ -19,9 +19,9 @@ public class Task extends Lesson {
 
     private Integer questionCount;
 
-    private Integer approvalcount;
+    private Integer approvalCount;
 
-    private double weight;
+    private Double weight;
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant dueDate;
@@ -31,7 +31,7 @@ public class Task extends Lesson {
         super(id, title, position, section);
         this.description = description;
         this.questionCount = questionCount;
-        this.approvalcount = approvalcount;
+        this.approvalCount = approvalcount;
         this.weight = weight;
         this.dueDate = dueDate;
     }
