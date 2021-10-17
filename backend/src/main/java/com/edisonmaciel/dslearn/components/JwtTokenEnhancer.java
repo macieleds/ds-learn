@@ -3,7 +3,6 @@ package com.edisonmaciel.dslearn.components;
 import com.edisonmaciel.dslearn.entities.User;
 import com.edisonmaciel.dslearn.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;

@@ -1,6 +1,5 @@
 package com.edisonmaciel.dslearn.repositories;
 
-import com.edisonmaciel.dslearn.entities.Notification;
 import com.edisonmaciel.dslearn.entities.Offer;
 import org.springframework.data.jpa.repository.JpaRepository;
 

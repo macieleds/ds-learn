@@ -1,6 +1,5 @@
 package com.edisonmaciel.dslearn.entities;
 
-import com.edisonmaciel.dslearn.entities.enums.ResourceType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
