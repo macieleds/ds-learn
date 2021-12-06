@@ -1,5 +1,6 @@
 package com.edisonmaciel.dslearn.resources.exceptions;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,9 +8,9 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.time.Instant;
 
-@Getter
-@Setter
+
 @NoArgsConstructor
+@Data
 public class StandardError implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

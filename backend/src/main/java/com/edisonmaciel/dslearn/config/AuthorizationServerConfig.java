@@ -22,10 +22,10 @@ import java.util.Arrays;
 @RequiredArgsConstructor
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-    @Value("${secutiry.oauth2.client.client-id}")
+    @Value("${security.oauth2.client.client-id}")
     private String clientId;
 
-    @Value("${secutiry.oauth2.client.client-secret}")
+    @Value("${security.oauth2.client.client-secret}")
     private String clientSecret;
 
     @Value("${jwt.duration}")

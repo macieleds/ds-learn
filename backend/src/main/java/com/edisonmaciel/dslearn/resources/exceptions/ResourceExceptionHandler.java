@@ -1,7 +1,9 @@
 package com.edisonmaciel.dslearn.resources.exceptions;
 
 import com.edisonmaciel.dslearn.services.exceptions.DatabaseException;
+import com.edisonmaciel.dslearn.services.exceptions.ForbiddenException;
 import com.edisonmaciel.dslearn.services.exceptions.ResourceNotFoundException;
+import com.edisonmaciel.dslearn.services.exceptions.UnaothorizedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -56,6 +58,18 @@ public class ResourceExceptionHandler {
 		}
 
 		return ResponseEntity.status(status).body(err);
+	}
+
+	@ExceptionHandler(ForbiddenException.class)
+	public ResponseEntity<OAuthCustomError> forbidden(final ForbiddenException e, final HttpServletRequest request){
+		OAuthCustomError err = new OAuthCustomError("Forbidden", e.getMessage());
+		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(err);
+	}
+
+	@ExceptionHandler(UnaothorizedException.class)
+	public ResponseEntity<OAuthCustomError> unauthorized(final UnaothorizedException e, final HttpServletRequest request){
+		OAuthCustomError err = new OAuthCustomError("Unauthorized", e.getMessage());
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(err);
 	}
 
 }
